@@ -10,10 +10,10 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
-
-<!--  alerts and notices of the devise gem -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+<!--  Display of the navbar -->
+    <%= render "shared/navbar" %>
+<!--  Alerts and notices of the devise gem when signin in or out -->
+    <%= render 'shared/flashes' %>
 
     <%= yield %>
     <%= javascript_include_tag 'application' %>
