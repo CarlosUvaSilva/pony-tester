@@ -1,6 +1,6 @@
 class PoniesController < ApplicationController
   def index
-   @pony = Pony.all
+   @pony = Pony.where(user_id: current_user.id)
   end
 
   def show
@@ -12,7 +12,8 @@ class PoniesController < ApplicationController
   end
 
   def create
-    @pony = Pony.new(check_params(params))
+    @pony = Pony.new(pony_params)
+    @pony.user = current_user
     if @pony.save
       redirect_to pony_path(@pony)
     else
@@ -26,7 +27,7 @@ class PoniesController < ApplicationController
   end
 
   def update
-    Pony.update(check_params(params))
+    Pony.find(params[:id]).update(pony_params)
     redirect_to pony_path
   end
 
@@ -34,13 +35,12 @@ class PoniesController < ApplicationController
     Pony.find(params[:id]).destroy
     redirect_to ponies_path
   end
+
+
+  private
+
+  def pony_params
+    params.require(:pony).permit(:name, :description, :race, :color, :location, :photo)
+  end
 end
 
-private
-
-def check_params(params)
-  {name: params[:pony][:name], color:
-    params[:pony][:color], race: params[:pony][:race], user: current_user,
-    description: params[:pony][:description],
-    location: params[:pony][:location]  }
-end

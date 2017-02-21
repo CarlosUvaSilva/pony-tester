@@ -5,4 +5,6 @@ class Pony < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :location, presence: true
+
+  has_attachment :photo
 end
