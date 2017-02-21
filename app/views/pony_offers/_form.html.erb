@@ -1,0 +1,10 @@
+<%= simple_form_for @pony_offer, method: "post", url: pony_pony_offers_path do |f| %>
+  <div class="form-group">
+    <%= f.input :start_date, label: "Please enter the start date of your offer: ", as: :date, input_html: {class: "form-control"} %>
+    <%= f.input :end_date, label: "Please enter the end date of your offer: ", as: :date, input_html: {class: "form-control"} %>
+    <%= f.input :daily_rate, label: "Please enter the offer's daily rate: ", input_html: {class: "form-control"} %>
+  </div>
+
+  <br>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

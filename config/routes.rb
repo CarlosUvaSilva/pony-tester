@@ -9,11 +9,13 @@ Rails.application.routes.draw do
 
 
 
-  resources :pony_offers, except: [ :update, :edit ]
+  resources :pony_offers, only: [:index, :destroy]
 
   resources :bookings, except: [ :update, :edit ]
 
-  resources :ponies
+  resources :ponies do
+    resources :pony_offers, only: [:new, :create, :show, :list ]
+  end
 
 
 

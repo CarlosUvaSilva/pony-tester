@@ -1,2 +1,21 @@
-<h1>PonyOffers#show</h1>
-<p>Find me in app/views/pony_offers/show.html.erb</p>
+<h2> Pony Offer number <%= @pony_offer.id %></h2>
+
+
+<p> Start date: <%= @pony_offer.start_date%></p>
+<p> End date: <%= @pony_offer.end_date%></p>
+<p> Daily rate: <%= @pony_offer.daily_rate%></p>
+
+<ul>
+
+<li><%= @pony_offer.pony.name %></li>
+<li><%= @pony_offer.pony.location %></li>
+<li><%= @pony_offer.pony.color %></li>
+<li><%= @pony_offer.pony.age %></li>
+
+</ul>
+
+<h3>Description</h3>
+<p><%= @pony_offer.pony.description %></p>
+
+
+<%= link_to 'delete offer',  pony_offer_path(@pony_offer), method: 'delete' %>
