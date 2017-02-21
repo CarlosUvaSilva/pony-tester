@@ -1,2 +1,18 @@
-<h1>PonyOffers#show</h1>
-<p>Find me in app/views/pony_offers/show.html.erb</p>
+<h2> Pony Offer number <%= @ponyoffer.id %></h2>
+
+
+<p> Start date: <%= @ponyoffer.start_date%></p>
+<p> End date: <%= @ponyoffer.end_date%></p>
+<p> Daily rate: <%= @ponyoffer.daily_rate%></p>
+
+<ul>
+
+<li><%= @ponyoffer.pony.name %></li>
+<li><%= @ponyoffer.pony.location %></li>
+<li><%= @ponyoffer.pony.color %></li>
+<li><%= @ponyoffer.pony.age %></li>
+
+</ul>
+
+<h3>Description</h3>
+<p><%= @ponyoffer.pony.description %></p>
