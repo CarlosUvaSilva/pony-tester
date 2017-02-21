@@ -27,6 +27,11 @@
             <i class="fa fa-user" aria-hidden="true"></i> Profile
             <% end  %>
           </li>
+           <li>
+            <%= link_to ponies_path do %>
+            <i class="fa fa-list" aria-hidden="true"></i> My Ponies
+            <% end %>
+          </li>
           <li>
             <%= link_to destroy_user_session_path, method: "delete" do %>
             <i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out

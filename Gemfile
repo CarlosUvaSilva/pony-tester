@@ -17,6 +17,11 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
 
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
 gem 'omniauth-facebook'
 
 group :development, :test do
