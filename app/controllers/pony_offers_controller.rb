@@ -6,6 +6,7 @@ class PonyOffersController < ApplicationController
   # method do list all offers from one user
   def index
     @pony_offers = current_user.owned_pony_offers
+    @active_pony_offers = @pony_offers.where(most_recent: true)
   end
 
   # method do list all offers associated with one pony
@@ -30,6 +31,7 @@ class PonyOffersController < ApplicationController
 
   def create
     @pony_offer = PonyOffer.new(pony_offer_params)
+    @pony_offer.most_recent = true
     @pony = Pony.find(params[:pony_id])
     @pony_offer.pony = @pony
 
