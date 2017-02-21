@@ -1,35 +1,37 @@
-<h1>Ponies#index</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <p id="notice"><%= notice %></p>
+      <h3>My registered ponies</h3>
+      <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th scope="row">Name</th>
+            <th scope="row">Color</th>
+            <th scope="row">Description</th>
+            <th scope="row">Location</th>
+            <th scope="row">Race</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pony.each do |pony| %>
+            <tr>
+              <td><%= pony.name %></td>
+              <td><%= pony.color %></td>
+              <td><%= pony.description %></td>
+              <td><%= pony.location %></td>
+              <td><%= pony.race %></td>
+              <td><%= link_to 'Show', pony_path(pony) %></td>
+              <td><%= link_to 'Edit', edit_pony_path(pony) %></td>
+              <td><%= link_to 'Destroy', pony_path(pony), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'List Pony', new_pony_pony_offer_path(pony)%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= link_to 'New Pony', new_pony_path %>
+    </div>
+  </div>
+</div>
 
-<% @pony.each do |pony| %>
-<% end %>
-
-
-<p id="notice"><%= notice %></p>
-<h1>Ponys</h1>
-<table class="table table-inverse">
-  <thead>
-    <tr>
-      <th scope="row">Name</th>
-      <th scope="row">Color</th>
-      <th scope="row">Description</th>
-      <th scope="row">Location</th>
-      <th scope="row">Race</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @pony.each do |pony| %>
-      <tr>
-        <td><%= pony.name %></td>
-        <td><%= pony.color %></td>
-        <td><%= pony.description %></td>
-        <td><%= pony.location %></td>
-        <td><%= pony.race %></td>
-        <td><%= link_to 'Show', pony_path(pony) %></td>
-        <td><%= link_to 'Edit', edit_pony_path(pony) %></td>
-        <td><%= link_to 'Destroy', pony_path(pony), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<%= link_to 'New Pony', new_pony_path %>

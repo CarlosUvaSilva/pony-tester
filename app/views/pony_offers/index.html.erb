@@ -1,10 +1,15 @@
-<h1>PonyOffers#index</h1>
-<p>Find me in app/views/pony_offers/index.html.erb</p>
-
-
-
+<h3>My old pony listings:</h3>
 <% @pony_offers.each do |offer| %>
 
-<p> Pony offer: <%= offer.id %> <%=link_to 'show', pony_pony_offer_path(offer.pony, offer)%> </p>
+<% offer.most_recent ? status = "active" : status = "old" %>
+  <% unless offer.most_recent %>
+    <p> Pony offer: <%= offer.id %> - Pony: <%= offer.pony.name %> - <%=link_to 'show', pony_pony_offer_path(offer.pony, offer)%> - Status: <%= status  %> </p>
+  <% end %>
+<% end %>
 
+<h3>My active pony listings:</h3>
+<% @active_pony_offers.each do |offer| %>
+
+  <% offer.most_recent ? status = "active" : status = "old" %>
+  <p> Pony offer: <%= offer.id %> - Pony: <%= offer.pony.name %> - <%=link_to 'show', pony_pony_offer_path(offer.pony, offer)%> - Status: <%= status  %> </p>
 <% end %>
