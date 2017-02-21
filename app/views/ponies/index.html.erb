@@ -1,2 +1,35 @@
 <h1>Ponies#index</h1>
-<p>Find me in app/views/ponies/index.html.erb</p>
+
+<% @pony.each do |pony| %>
+<% end %>
+
+
+<p id="notice"><%= notice %></p>
+<h1>Ponys</h1>
+<table class="table table-inverse">
+  <thead>
+    <tr>
+      <th scope="row">Name</th>
+      <th scope="row">Color</th>
+      <th scope="row">Description</th>
+      <th scope="row">Location</th>
+      <th scope="row">Race</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pony.each do |pony| %>
+      <tr>
+        <td><%= pony.name %></td>
+        <td><%= pony.color %></td>
+        <td><%= pony.description %></td>
+        <td><%= pony.location %></td>
+        <td><%= pony.race %></td>
+        <td><%= link_to 'Show', pony_path(pony) %></td>
+        <td><%= link_to 'Edit', edit_pony_path(pony) %></td>
+        <td><%= link_to 'Destroy', pony_path(pony), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Pony', new_pony_path %>
