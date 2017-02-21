@@ -1,11 +1,18 @@
 class PonyOffersController < ApplicationController
 
-  before_action :set_ponyoffer, only: [:show, :destroy]
+  before_action :set_pony_offer, only: [:show, :destroy]
 
 
-
+  # method do list all offers from one user
   def index
-    @ponyoffer = PonyOffer.all
+    @pony_offers = current_user.owned_pony_offers
+
+  end
+
+  # method do list all offers associated with one pony
+  def list
+    @pony = Pony.find(params[:pony_id])
+    @pony_offers = @pony.pony_offers
   end
 
   # Done
@@ -15,14 +22,33 @@ class PonyOffersController < ApplicationController
 
 
   def new
-    @poney = Poney.find(params[:poney_id])
-    @ponyoffer = PonyOffer.new
+      @pony = Pony.find(params[:pony_id])
+    if @pony.user.id == current_user.id
+      @pony_offer = PonyOffer.new
+    else
+      redirect_to root_path, notice: "Selected pony does not belong to current user"
+  end
   end
 
   def create
+    @pony_offer = PonyOffer.new(pony_offer_params)
+    @pony = Pony.find(params[:pony_id])
+    @pony_offer.pony = @pony
+
+
+    if @pony_offer.save
+      redirect_to root_path, notice: "Pony offer was successfully created"
+    else
+      @pony_offer = @pony_offer.errors
+      render :new
+    end
+
+
   end
 
   def destroy
+    @pony_offer.destroy
+    redirect_to pony_offers_path
   end
 
 
@@ -30,13 +56,13 @@ class PonyOffersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_ponyoffer
-      @ponyoffer = PonyOffer.find(params[:id])
+    def set_pony_offer
+      @pony_offer = PonyOffer.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def ponyoffer_params
-      params.require(:ponyoffer).permit(:pony_id, :start_date, :end_date, :daily_rate)
+    def pony_offer_params
+      params.require(:pony_offer).permit(:start_date, :end_date, :daily_rate)
     end
 
 

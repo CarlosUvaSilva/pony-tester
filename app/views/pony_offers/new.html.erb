@@ -1,2 +1,5 @@
-<h1>PonyOffers#new</h1>
-<p>Find me in app/views/pony_offers/new.html.erb</p>
+<h1>New PonyOffer</h1>
+
+<%= render 'form', pony_offer: @pony_offer %>
+
+<%= link_to 'Back', pony_path(@pony) %>

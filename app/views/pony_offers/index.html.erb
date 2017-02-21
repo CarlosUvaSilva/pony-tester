@@ -2,10 +2,9 @@
 <p>Find me in app/views/pony_offers/index.html.erb</p>
 
 
-<h3> Number of Offers: <%= @ponyoffer.count %> </h3>
 
-<% @ponyoffer.each do |offer| %>
+<% @pony_offers.each do |offer| %>
 
-<p> Poney offer: <%= offer.id %> </p>
+<p> Pony offer: <%= offer.id %> <%=link_to 'show', pony_pony_offer_path(offer.pony, offer)%> </p>
 
 <% end %>
