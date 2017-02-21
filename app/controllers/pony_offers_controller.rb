@@ -6,7 +6,6 @@ class PonyOffersController < ApplicationController
   # method do list all offers from one user
   def index
     @pony_offers = current_user.owned_pony_offers
-
   end
 
   # method do list all offers associated with one pony
@@ -19,15 +18,14 @@ class PonyOffersController < ApplicationController
   def show
   end
 
-
-
   def new
-      @pony = Pony.find(params[:pony_id])
+    # User can only create a new offer if the pony belongs to him, if not redirect user to the root
+    @pony = Pony.find(params[:pony_id])
     if @pony.user.id == current_user.id
       @pony_offer = PonyOffer.new
     else
       redirect_to root_path, notice: "Selected pony does not belong to current user"
-  end
+    end
   end
 
   def create
@@ -39,10 +37,8 @@ class PonyOffersController < ApplicationController
     if @pony_offer.save
       redirect_to root_path, notice: "Pony offer was successfully created"
     else
-      @pony_offer = @pony_offer.errors
       render :new
     end
-
 
   end
 
@@ -50,9 +46,6 @@ class PonyOffersController < ApplicationController
     @pony_offer.destroy
     redirect_to pony_offers_path
   end
-
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -64,7 +57,5 @@ class PonyOffersController < ApplicationController
     def pony_offer_params
       params.require(:pony_offer).permit(:start_date, :end_date, :daily_rate)
     end
-
-
 
 end
