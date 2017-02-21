@@ -1,2 +1,12 @@
-<h1>Ponies#show</h1>
-<p>Find me in app/views/ponies/show.html.erb</p>
+<h1>This is </h1> <%= @pony.name %>
+<br><br>
+<br><p>Color </p> <%= @pony.color %><br>
+<br><br>
+<br><p>Race </p> <%= @pony.race %><br>
+<br><br>
+<br><p>Location </p> <%= @pony.location %><br>
+<br><br>
+<br><p>Description </p> <%= @pony.description %><br>
+<br><br>
+
+<br><%= link_to "All ponies", ponies_path %><br>
