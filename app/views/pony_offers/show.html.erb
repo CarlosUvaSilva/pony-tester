@@ -25,6 +25,8 @@
         <% else %>
         <!-- TEMPORARY -->
           <%= link_to "Book this pony!", root_path, class:"btn btn-brand" %>
+          <% @booking = Booking.new %>
+          <%= render "offer_booking_form", booking: @booking  %>
         <% end %>
     </div>
     <div class="col-xs-6">
