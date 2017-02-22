@@ -1,21 +1,27 @@
-<%= simple_form_for @pony do |f| %>
-  <div class="form-group">
-    <%= f.input :name, label: "Please enter the name of your pony: ", input_html: {class: "form-control"} %>
-  </div>
-  <div class="form-group">
-  <%= f.input :color, label: "Please enter your color: ", as: :text, input_html: {class: "form-control"} %>
-  </div>
-  <div class="form-group">
-  <%= f.input :race, label: "Please enter your pony's race: ", as: :text, input_html: {class: "form-control"} %>
-  </div>
-  <div class="form-group">
-    <%= f.input :description, label: "Please describe your pony: ", as: :text, input_html: {class: "form-control"} %>
-  </div>
-  <div class="form-group">
-      <%= f.input :location, label: "Please give the location of your pony: ", as: :text, input_html: {class: "form-control"} %>
-  </div>
-  <%= f.input :photo, as: :attachinary %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <%= simple_form_for @pony do |f| %>
+        <div class="form-group">
+          <%= f.input :name, label: "Please enter the name of your pony: ", input_html: {class: "form-control"} %>
+        </div>
+        <div class="form-group">
+        <%= f.input :color, label: "Please enter your color: ", as: :text, input_html: {class: "form-control"} %>
+        </div>
+        <div class="form-group">
+        <%= f.input :race, label: "Please enter your pony's race: ", as: :text, input_html: {class: "form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.input :description, label: "Please describe your pony: ", as: :text, input_html: {class: "form-control"} %>
+        </div>
+        <div class="form-group">
+            <%= f.input :location, label: "Please give the location of your pony: ", as: :text, input_html: {class: "form-control"} %>
+        </div>
+        <%= f.input :photo, as: :attachinary %>
 
-  <br>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+        <br>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
