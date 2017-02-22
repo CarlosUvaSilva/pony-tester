@@ -8,6 +8,9 @@ class Pony < ApplicationRecord
 
   has_attachment :photo
 
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
+
   def is_owner?(a_user)
     if a_user
       self.user.id == a_user.id
