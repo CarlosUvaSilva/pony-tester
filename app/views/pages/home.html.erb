@@ -35,6 +35,17 @@
       </form>
     </div>
   </div>
+
+
+
+  <% if user_signed_in? && current_user.provider=='facebook' %>
+  <h1> <%= 'HELLOOOOOO' %> </h1>
+  <% end %>
+
+
+
+
+
   <div class="row">
     <div class="col-xs-4">
       <h2 class="home-ponies-title">Ponies</h2>
