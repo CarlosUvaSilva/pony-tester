@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'search', to: "pages#search", as: "search"
 
   devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+                   registrations: 'users/registrations' }
 
   root to: 'pages#home'
 

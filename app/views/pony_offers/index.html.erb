@@ -1,15 +1,24 @@
-<h3>My old pony listings:</h3>
-<% @pony_offers.each do |offer| %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>My active pony listings:</h3>
+      <% @active_pony_offers.each do |offer| %>
 
-<% offer.most_recent ? status = "active" : status = "old" %>
-  <% unless offer.most_recent %>
-    <p> Pony offer: <%= offer.id %> - Pony: <%= offer.pony.name %> - <%=link_to 'show', pony_pony_offer_path(offer.pony, offer)%> - Status: <%= status  %> </p>
-  <% end %>
-<% end %>
+        <% offer.most_recent ? status = "active" : status = "old" %>
+        <p> Pony offer: <%= offer.id %> - Pony: <%= offer.pony.name %> - <%=link_to 'show', pony_pony_offer_path(offer.pony, offer)%> - Status: <%= status  %> </p>
+      <% end %>
 
-<h3>My active pony listings:</h3>
-<% @active_pony_offers.each do |offer| %>
+      <h3>My old pony listings:</h3>
+      <% @pony_offers.each do |offer| %>
 
-  <% offer.most_recent ? status = "active" : status = "old" %>
-  <p> Pony offer: <%= offer.id %> - Pony: <%= offer.pony.name %> - <%=link_to 'show', pony_pony_offer_path(offer.pony, offer)%> - Status: <%= status  %> </p>
-<% end %>
+      <% offer.most_recent ? status = "active" : status = "old" %>
+        <% unless offer.most_recent %>
+          <p> Pony offer: <%= offer.id %> - Pony: <%= offer.pony.name %> - <%=link_to 'show', pony_pony_offer_path(offer.pony, offer)%> - Status: <%= status  %> </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "My Ponies", ponies_path, class:"btn btn-primary" %>
+</div>
+
+

@@ -17,7 +17,7 @@ for i in 1..10
     pony_name = Faker::Cat.name
     pony_description = "This pony is very " + %w(gentle active strong fast beautiful smart).sample
     pony_description += " and is loved by most people that meet it. On top of that, " + Faker::Hipster.sentence
-    location = rand(1..150).to_s + " " + Faker::GameOfThrones.house + " " + %w(street road alley pass).sample + " , " + Faker::GameOfThrones.city
+    location = Faker::Address.state
     a_pony = Pony.create(name: pony_name, description: pony_description, location: location, user: a_user)
     a_pony.photo_url = "http://loremflickr.com/320/240/pony"
     rand(0..10).times do
