@@ -8,10 +8,12 @@
 
         <ul>
 
-        <li><%= @pony_offer.pony.name %></li>
-        <li><%= @pony_offer.pony.location %></li>
-        <li><%= @pony_offer.pony.color %></li>
-        <li><%= @pony_offer.pony.age %></li>
+        <% %w(name location color age). each do |method|  %>
+          <% value = @pony_offer.pony[method.to_sym]  %>
+          <% unless value.nil? || value.strip == "" %>
+            <li><%= value %></li>
+          <% end %>
+        <% end %>
 
         </ul>
 
