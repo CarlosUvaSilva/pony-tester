@@ -7,15 +7,30 @@
       </div>
       <div class="col-xs-4 col-xs-offset-2">
         <div class="form-inputs">
+
+
+
+
+          <% unless user_signed_in? && current_user.provider=='facebook' %>
+
           <%= f.input :email, required: true, autofocus: true %>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
 
-          <%= f.input :password, autocomplete: "off", hint: "Leave it blank if you don't want to change it", required: false, hint_html: {style:"font-size: 10px"}  %>
-          <%= f.input :password_confirmation, required: false %>
-          <%= f.input :current_password, hint: "We need your current password to confirm your changes", required: true, hint_html: {style:"font-size: 10px"} %>
+            <%= f.input :password, autocomplete: "off", hint: "Leave it blank if you don't want to change it", required: false, hint_html: {style:"font-size: 10px"}  %>
+            <%= f.input :password_confirmation, required: false %>
+            <%= f.input :current_password, hint: "We need your current password to confirm your changes", required: false, hint_html: {style:"font-size: 10px"} %>
+
+          <% end %>
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="col-xs-4">
