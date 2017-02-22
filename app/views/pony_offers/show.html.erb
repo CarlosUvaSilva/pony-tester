@@ -6,16 +6,12 @@
         <p> End date: <%= @pony_offer.end_date%></p>
         <p> Daily rate: <%= @pony_offer.daily_rate%></p>
 
-        <ul>
-
-        <% %w(name location color age). each do |method|  %>
+        <% %w(name color age race description location). each do |method|  %>
           <% value = @pony_offer.pony[method.to_sym]  %>
           <% unless value.nil? || value.strip == "" %>
-            <li><%= value %></li>
+            <p> <strong><%= method.capitalize %></strong> - <%= value %> </p>
           <% end %>
         <% end %>
-
-        </ul>
 
         <h3>Description</h3>
         <p><%= @pony_offer.pony.description %></p>
