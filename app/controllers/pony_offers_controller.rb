@@ -1,6 +1,7 @@
 class PonyOffersController < ApplicationController
 
   before_action :set_pony_offer, only: [:show, :destroy]
+  skip_before_action :authenticate_user!, only: :show
 
 
   # method do list all offers from one user

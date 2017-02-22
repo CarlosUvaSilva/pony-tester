@@ -1,0 +1,30 @@
+.offer-card{
+  margin:20px;
+
+  p{
+    font-size: 12px;
+    margin: 3px 0px;
+  }
+
+  h4{
+    margin-bottom: 6px;
+  }
+}
+
+.card-img{
+  position: relative;
+  height: 240px;
+  width: 320px;
+  a{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: $gray;
+    opacity: 0;
+    &:hover{
+      opacity: 0.1;
+    }
+  }
+}

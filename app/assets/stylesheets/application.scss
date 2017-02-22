@@ -13,3 +13,11 @@
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
+
+.brand-color{
+  color: $brand-color
+}
+
+.boldest{
+  font-weight: 700;
+}
