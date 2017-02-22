@@ -31,6 +31,9 @@ gem 'omniauth-facebook'
 
 gem "geocoder"
 
+gem 'faker'
+
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
@@ -40,7 +43,6 @@ group :development, :test do
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker'
 end
 
 
