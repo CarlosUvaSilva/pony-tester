@@ -18,6 +18,15 @@ class PonyOffersController < ApplicationController
 
   # Done
   def show
+    @pony = @pony_offer.pony
+    @pony_coordinates = { lat: @pony.latitude, lng: @pony.longitude }
+    # Stores the informations required to display Google maps in a Hash
+    unless @pony_coordinates[:lat].nil?
+      @hash = Gmaps4rails.build_markers([@pony]) do |pony, marker|
+        marker.lat pony.latitude
+        marker.lng pony.longitude
+      end
+    end
   end
 
   def new
