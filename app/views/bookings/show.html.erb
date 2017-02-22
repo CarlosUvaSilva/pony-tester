@@ -1,2 +1,20 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<h1>My Booking</h1>
+<h2> Pony Bookingnumber <%= @booking.id %></h2>
+
+
+<p> Start date: <%= @booking.start_date%></p>
+<p> End date: <%= @booking.end_date%></p>
+<p> Daily rate: <%= @booking.pony_offer.daily_rate%></p>
+<p> Total price: <%= @booking.price%></p>
+
+<ul>
+
+<li><%= @booking.pony_offer.pony.name %></li>
+<li><%= @booking.pony_offer.pony.location %></li>
+<li><%= @booking.pony_offer.pony.color %></li>
+<li><%= @booking.pony_offer.pony.age %></li>
+
+</ul>
+
+<h3>Description</h3>
+<p><%= @booking.pony_offer.pony.description %></p>

@@ -1,2 +1,6 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>Confirm your booking</h1>
+
+<h3>The total price of your booking is <%= @price  %> euros</h3>
+<%= render 'booking_form', booking: @booking %>
+
+<%= link_to 'Back', pony_path(@pony) %>

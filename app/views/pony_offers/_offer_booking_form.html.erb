@@ -1,0 +1,9 @@
+<%= simple_form_for @booking, method: "get", url: new_pony_pony_offer_booking_path(@pony_offer.pony, @pony_offer) do |f| %>
+  <div class="form-group" >
+    <%= f.input :start_date, label: "Please enter desired start date of your booking: ", as: :string, input_html: {class: "form-control", id: "datepicker_start_date", placeholder: "DD/MM/YYYY"} %>
+    <%= f.input :end_date, label: "Please enter the desired end date of your booking: ", as: :string, input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "DD/MM/YYYY" %>
+  </div>
+
+  <br>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
