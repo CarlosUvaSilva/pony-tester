@@ -1,6 +1,6 @@
 class Pony < ApplicationRecord
   belongs_to :user
-  has_many :pony_offers
+  has_many :pony_offers, dependent: :destroy
 
   validates :name, presence: true
   validates :description, presence: true
