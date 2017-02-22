@@ -37,6 +37,7 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
+    /* PART FOR GOOGLE MAPS */
     $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
@@ -48,6 +49,37 @@
         } else if (markers.length == 1) {
           handler.getMap().setZoom(8);
         }
+      });
+    });
+
+
+
+    /* PART FOR DISABLING DATEPICKER DAYS */
+    var disabledDays = <%= raw @to_disable_dates %>;
+
+    /* utility functions */
+    function nationalDays(date) {
+      var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+      for (i = 0; i < disabledDays.length; i++) {
+        if($.inArray((m+1) + '-' + d + '-' + y,disabledDays) != -1 || new Date() > date) {
+          return [false];
+        }
+      }
+      return [true];
+    }
+
+
+    /* create datepicker for start date and end date */
+    jQuery(document).ready(function() {
+      jQuery('#datepicker_start_date').datepicker({
+        dateFormat: 'DD, MM, yy',
+        constrainInput: true,
+        beforeShowDay: nationalDays
+      });
+      jQuery('#datepicker_end_date').datepicker({
+        dateFormat: 'DD, MM, yy',
+        constrainInput: true,
+        beforeShowDay: nationalDays
       });
     });
   <% end %>
