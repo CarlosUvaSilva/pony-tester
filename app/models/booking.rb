@@ -7,4 +7,8 @@ class Booking < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :price, presence: true
+
+  def duration
+    (self.end_date - self.start_date).to_i + 1
+  end
 end

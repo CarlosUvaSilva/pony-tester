@@ -1,3 +1,5 @@
+
+
 <h2> Pony Offer number <%= @pony_offer.id %></h2>
 
 
@@ -24,5 +26,8 @@
   <%= link_to 'Back to my listing',  pony_offers_path %>
 <% else %>
 <!-- TEMPORARY -->
-  <%= link_to "Book this pony!", root_path, class:"btn btn-brand" %>
+
+<% @booking = Booking.new  %>
+<%= render "offer_booking_form", booking: @booking %>
+
 <% end %>
