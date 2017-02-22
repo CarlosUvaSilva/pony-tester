@@ -1,0 +1,14 @@
+.btn-brand{
+  background-color: $brand-color;
+  color: $beige-light;
+}
+
+.btn-brand:hover{
+  background-color: $brand-color-darker;
+  color: $beige-light;
+}
+
+.btn-home{
+  border-radius: 10px;
+  height: 50px;
+}

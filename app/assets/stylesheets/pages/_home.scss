@@ -2,3 +2,36 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+.welcome-text{
+  padding: 30px 30px 30px 0px;
+  margin-top: 20px;
+  margin-left:20px;
+  width: 90%;
+}
+
+.search-container{
+  margin-left:20px;
+  padding: 20px;
+  border: solid 1px $beige-light;
+  box-shadow: 0px 1px 2px $border-color;
+
+  input{
+    display:block;
+  }
+
+  label{
+    display:block;
+    font-weight: 400;
+  }
+
+  .submit-btn{
+    margin-top: 10px;
+  }
+}
+
+.home-ponies-title{
+  margin-top: 70px;
+  margin-left: 20px;
+  font-size: 24px;
+}

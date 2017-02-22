@@ -1,5 +1,61 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="welcome-text">
+        <h1><span class="brand-color boldest">Welcome to Rent-a-Pony.</span> Book unique ponies and experience a riding like a true Cow-Boy</h1>
+      </div>
+      <form action="<%= search_path %>" class="form-inline search-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="start_date" class="">From:</label>
+                <input type="date" placeholder="From" name="start_date" id="start_date" class="form-control">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="end_date" class="">To:</label>
+                <input type="date" placeholder="To" name="end_date" id="end_date" class="form-control">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="location" class="">Where:</label>
+                <input type="text" placeholder="City" name="location" id="location" class="form-control">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group submit-btn">
+                <input type="submit" value="Find your pony" class="btn btn-brand btn-home">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <h2 class="home-ponies-title">Ponies</h2>
+    </div>
+  </div>
+  <div class="row">
+    <% @pony_offers.each do |offer|  %>
+      <div class="col-xs-4">
+        <div class="offer-card">
+          <div class="card-img" style="background-image: url('<%= cl_image_path offer.pony.photo.path, width: 320, height: 240, crop: :fill %>')">
+            <%= link_to "", pony_pony_offer_path(offer.pony, offer) %>
+         </div>
+          <h4> <%= offer.pony.name %> </h4>
+          <p> <%= offer.pony.location  %></p>
+          <p> <strong> <%= offer.daily_rate  %> €/day </strong> </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
 
 
