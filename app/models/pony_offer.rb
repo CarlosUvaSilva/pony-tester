@@ -31,7 +31,7 @@ class PonyOffer < ApplicationRecord
         end
       end
     end
-    result_array
+    result_array.unshift((Date.today - 1).strftime('%-m-%-d-%Y'))
   end
 
   def check_availability(booking)
