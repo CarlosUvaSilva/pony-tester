@@ -1,0 +1,27 @@
+
+
+  <h1> Searching in: <%= @location %> </h1>
+
+
+
+
+
+  <h1> <strong> <%= @booking.start_date %> <%= @booking.end_date  %> </strong> </h1>
+
+<% @ponies.each do |pony| %>
+
+  <ul>
+    <li> Name:<%= pony.name %> - Location:<%= pony.location %> </li>
+  </ul>
+
+<% end  %>
+
+
+
+
+
+<% @available_offers.each do |offer| %>
+<ul>
+<li> <%= offer.pony.name  %> <%= offer.start_date  %> <%= offer.end_date  %> </li>
+</ul>
+<% end %>
