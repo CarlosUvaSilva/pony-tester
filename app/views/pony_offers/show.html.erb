@@ -23,8 +23,7 @@
           <br>
           <%= link_to 'Back to my listing',  pony_offers_path %>
         <% else %>
-        <!-- TEMPORARY -->
-          <%= link_to "Book this pony!", root_path, class:"btn btn-brand" %>
+          <br>
           <% @booking = Booking.new %>
           <%= render "offer_booking_form", booking: @booking  %>
         <% end %>
@@ -37,6 +36,7 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
+    /* PART FOR GOOGLE MAPS */
     $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
@@ -50,5 +50,43 @@
         }
       });
     });
+
+
+
+    /* PART FOR DISABLING DATEPICKER DAYS */
+    var disabledDays = <%= raw @to_disable_dates %>;
+
+    /* utility functions */
+    function unavailableDays(date) {
+      var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+      for (i = 0; i < disabledDays.length; i++) {
+        if($.inArray((m+1) + '-' + d + '-' + y,disabledDays) != -1 || new Date() > date) {
+          return [false];
+        }
+      }
+      return [true];
+    }
+
+
+    /* create datepicker for start date and end date */
+    <% max_date = @pony_offer.end_date.strftime('%-m-%-d-%Y')  %>
+
+      $('#datepicker_end_date').datepicker({
+        dateFormat: 'dd/mm/yy',
+        constrainInput: true,
+        beforeShowDay: unavailableDays,
+        maxDate: new Date(<%= raw [max_date] %>)
+      });
+
+      $('#datepicker_start_date').datepicker({
+        dateFormat: 'dd/mm/yy',
+        constrainInput: true,
+        beforeShowDay: unavailableDays,
+        maxDate: new Date(<%= raw [max_date] %>),
+        onClose: function(selectedDate) {
+          $("#datepicker_end_date").datepicker("option", "minDate", selectedDate );
+          $("#datepicker_end_date").focus();
+        }
+      });
   <% end %>
 <% end %>

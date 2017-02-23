@@ -11,6 +11,9 @@ class BookingsController < ApplicationController
     @pony = @pony_offer.pony
     @booking = Booking.new(booking_params(params))
     @price = @booking.duration * @pony_offer.daily_rate
+    @to_disable_dates = @pony_offer.unavailable_dates
+    @to_disable_dates.unshift((Date.today - 1).strftime('%-m-%-d-%Y'))
+    @error = @pony_offer.check_availability(@booking)
   end
 
   def create

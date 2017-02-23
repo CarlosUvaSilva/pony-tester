@@ -1,10 +1,10 @@
 <%= simple_form_for @booking, method: "post", url: pony_pony_offer_bookings_path(@pony, @pony_offer) do |f| %>
   <div class="form-group">
-    <%= f.input :start_date, label: "Please enter the start date of your booking: ", as: :string, input_html: {class: "form-control", id: "datepicker_start_date", placeholder: "DD/MM/YYYY"} %>
-    <%= f.input :end_date, label: "Please enter the end date of your booking: ", as: :string, input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "DD/MM/YYYY" %>
+    <%= f.input :start_date, label: "Start date of your booking: ", as: :string, input_html: {class: "form-control", id: "datepicker_start_date", placeholder: "dd/mm/yyyy"} %>
+    <%= f.input :end_date, label: "End date of your booking: ", as: :string, input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "dd/mm/yyyy" %>
   </div>
 
 
   <br>
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.button :submit, class: "btn btn-primary", value: "Confirm Booking" %>
 <% end %>

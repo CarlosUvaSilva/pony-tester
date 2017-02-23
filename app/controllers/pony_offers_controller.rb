@@ -27,6 +27,8 @@ class PonyOffersController < ApplicationController
         marker.lng pony.longitude
       end
     end
+    @to_disable_dates = @pony_offer.unavailable_dates
+    @to_disable_dates.unshift((Date.today - 1).strftime('%-m-%-d-%Y'))
   end
 
   def new
