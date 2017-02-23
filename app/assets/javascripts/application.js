@@ -17,13 +17,13 @@ $(document).ready(function(){
       $('.alert').fadeOut(1000);
   }, 3000);
 
-  $( function() {
-    $( "#datepicker_start_date" ).datepicker({
-      dateFormat: "dd/mm/yy"
-      });
-    $( "#datepicker_end_date" ).datepicker({
-      dateFormat: "dd/mm/yy"
-      });
-  } );
+  // $( function() {
+  //   $( "#datepicker_start_date" ).datepicker({
+  //     dateFormat: "dd/mm/yy"
+  //     });
+  //   $( "#datepicker_end_date" ).datepicker({
+  //     dateFormat: "dd/mm/yy"
+  //     });
+  // } );
 })
 
