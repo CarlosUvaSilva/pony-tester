@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   def new
@@ -24,7 +25,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.pony_offer = @pony_offer
     @booking.save
-    render 'show'
+    redirect_to booking_path(@booking)
   end
 
   def destroy
