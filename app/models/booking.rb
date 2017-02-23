@@ -21,4 +21,9 @@ class Booking < ApplicationRecord
     end
     result_array
   end
+
+  # Checks is physically overdue meaning that its over
+  def old?
+    self.end_date || self.end_date < Date.today
+  end
 end

@@ -1,5 +1,6 @@
 class PonyOffer < ApplicationRecord
   belongs_to :pony
+  has_one :user, through: :pony
   has_many :bookings
 
   validates :pony_id, presence: true

@@ -1,9 +1,11 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.where(user_id: current_user.id)
+    @rented_bookings = current_user.rented_bookings
+    @owned_bookings = current_user.owned_bookings
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   def new
@@ -23,7 +25,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.pony_offer = @pony_offer
     @booking.save
-    render 'show'
+    redirect_to booking_path(@booking)
   end
 
   def destroy

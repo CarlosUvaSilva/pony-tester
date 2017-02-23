@@ -39,4 +39,11 @@ class User < ApplicationRecord
     return user
   end
 
+  def owned_bookings
+    Booking.joins(pony_offer: :pony).where("ponies.user_id = ?", self.id )
+  end
+
+  def rented_bookings
+    self.bookings
+  end
 end
