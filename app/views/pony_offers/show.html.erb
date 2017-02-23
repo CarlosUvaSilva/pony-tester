@@ -70,15 +70,14 @@
 
     /* create datepicker for start date and end date */
     <% max_date = @pony_offer.end_date.strftime('%-m-%-d-%Y')  %>
-    <% min_date = Date.today.strftime('%-m-%-d-%Y')  %>
+    <% Date.today <= @pony_offer.start_date ? min_date = @pony_offer.start_date.strftime('%-m-%-d-%Y') : min_date = Date.today.strftime('%-m-%-d-%Y')  %>
 
 
       $('#datepicker_end_date').datepicker({
         dateFormat: 'dd/mm/yy',
         constrainInput: true,
         beforeShowDay: unavailableDays,
-        maxDate: new Date(<%= raw [max_date] %>),
-        minDate: new Date(<%= raw [min_date] %>)
+        maxDate: new Date(<%= raw [max_date] %>)
       });
 
       $('#datepicker_start_date').datepicker({

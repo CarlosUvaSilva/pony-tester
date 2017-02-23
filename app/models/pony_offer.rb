@@ -35,16 +35,16 @@ class PonyOffer < ApplicationRecord
     result_array.unshift((Date.today - 1).strftime('%-m-%-d-%Y'))
   end
 
-  def check_availability(booking)
+  def available?(booking)
     dates = booking.dates
     dates.each do |date|
-      return true if self.unavailable_dates.include?(date.strftime('%-m-%-d-%Y'))
+      return false if self.unavailable_dates.include?(date.strftime('%-m-%-d-%Y'))
     end
     start = booking.start_date
     finish = booking.end_date
     if self.start_date > start || self.end_date < finish
-      return true
+      return false
     end
-    false
+    true
   end
 end

@@ -12,12 +12,11 @@ class PagesController < ApplicationController
     @available_offers = []
     @booking = Booking.new(start_date: Date.parse(start), end_date: Date.parse(finish))
     @location = params[:location]
-
     # Return an array with ponies within a 300km radius around the selected location
     @ponies = Pony.near(params[:location],300)
     @ponies.each do |pony|
       # Narrows down the previous array so it only shows ponies that are available to rent in the selected time interval
-      if !pony.pony_offers.where(most_recent: true).first.check_availability(@booking)
+      if pony.pony_offers.where(most_recent: true).first.available?(@booking)
         @available_offers << pony.pony_offers.where(most_recent: true).first
       end
 
