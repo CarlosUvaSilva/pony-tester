@@ -35,7 +35,7 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
     /* PART FOR GOOGLE MAPS */
     $(document).ready(function() {
       var handler = Gmaps.build('Google');
@@ -88,5 +88,5 @@
           $("#datepicker_end_date").focus();
         }
       });
-  <% end %>
+  </script>
 <% end %>

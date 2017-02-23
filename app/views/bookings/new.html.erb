@@ -10,7 +10,7 @@
 <%= link_to 'Back', pony_path(@pony) %>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
 
     /* PART FOR DISABLING DATEPICKER DAYS */
     var disabledDays = <%= raw @to_disable_dates %>;
@@ -47,5 +47,5 @@
           $("#datepicker_end_date").focus();
         }
       });
-  <% end %>
+  </script>
 <% end %>

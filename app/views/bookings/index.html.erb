@@ -1,5 +1,12 @@
 <h1>My Bookings</h1>
 
-<% @bookings.each do |booking| %>
-  <p> Pony booking: <%= booking.id %> - Pony: <%= booking.pony_offer.pony.name %> - From <%= booking.start_date  %> to <%= booking.end_date  %> - Renter: <%= booking.user.first_name  %></p>
+<h2>My rented ponies</h2>
+<% @rented_bookings.each do |booking| %>
+  <p> Pony booking: <%= booking.id %> - Pony: <%= booking.pony_offer.pony.name %> - From <%= booking.start_date  %> to <%= booking.end_date  %> - <strong>Renter:</strong> <%= booking.user.first_name  %> - <strong>Owner:</strong> <%= booking.pony_offer.pony.user.first_name  %> </p>
+<% end %>
+
+
+<h2>My owned ponies on rent</h2>
+<% @owned_bookings.each do |booking| %>
+  <p> Pony booking: <%= booking.id %> - Pony: <%= booking.pony_offer.pony.name %> - From <%= booking.start_date  %> to <%= booking.end_date  %> - <strong>Renter:</strong> <%= booking.user.first_name  %> - <strong>Owner:</strong> <%= booking.pony_offer.pony.user.first_name  %> </p>
 <% end %>
